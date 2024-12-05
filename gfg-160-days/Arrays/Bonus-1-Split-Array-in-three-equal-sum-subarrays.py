@@ -53,3 +53,56 @@ def findSplit(arr):
 print(findSplit([1, 3, 4, 0, 4]))  # Output: [1, 2]
 print(findSplit([2, 3, 4]))        # Output: [-1, -1]
 print(findSplit([1, -1, 1, -1, 1, -1, 1, -1]))  # Output: [1, 3]
+
+'''
+Algorithm:
+
+    Calculate the Total Sum:
+
+        If the total sum is not divisible by 3, return [-1, -1].
+
+    Iterate Through the Array:
+
+        Use a variable to track the cumulative sum while traversing the array.
+        Find the first index i where the cumulative sum equals the first target sum (total_sum // 3).
+        Continue and find the next index j where the cumulative sum equals twice the target sum (2 * total_sum // 3).
+
+    Return Indices:
+
+        Ensure j is not the last index to guarantee three non-empty parts.
+        If indices i and j are valid, return [i, j].
+        Otherwise, return [-1, -1]
+
+Explanation:
+
+    Tracking Split Points:
+        first_split is recorded when the cumulative sum equals target_sum.
+        second_split is recorded when the cumulative sum equals 2 * target_sum.
+
+    Stopping Early:
+        The loop exits as soon as both split points are identified.
+
+    Validation:
+        Ensure second_split is not at the last index to leave a non-empty third segment.
+
+Complexity:
+
+    Time Complexity: O(n)O(n), as we traverse the array once.
+    Space Complexity: O(1)O(1), as we use only a few variables.
+
+Example Outputs:
+
+    Input: [1, 3, 4, 0, 4]
+        Total sum = 12, target sum = 4.
+        First split at index 1, second split at index 2.
+        Output: [1, 2].
+
+    Input: [2, 3, 4]
+        Total sum = 9, target sum = 3.
+        No valid splits. Output: [-1, -1].
+
+    Input: [1, -1, 1, -1, 1, -1, 1, -1]
+        Total sum = 0, target sum = 0.
+        First split at index 1, second split at index 3.
+        Output: [1, 3].
+'''
